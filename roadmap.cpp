@@ -63,7 +63,7 @@ typedef std::vector<Vertex> Trip;
 Trip RoadMap::planTheTrip(std::string fromCity, std::string toCity){
 
  std:vector<std::string> citiesVisited;
- for (City& c : citiesVisited)
+ for (City c : citiesVisited)
     citiesVisited.push_back(c);
 
   std::vector<City> c;
