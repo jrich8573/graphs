@@ -69,7 +69,7 @@ Trip RoadMap::planTheTrip(std::string fromCity, std::string toCity){
   std::vector<City> c;
   auto pos = std::find(citiesVisited.end(fromCity);
   if(pos == citiesVisited.end()){ // Never seen from city before need to add it
-    c = addCity(fromCity)
+    c = addCity(fromCity);
   }else{
     c = addCity(toCity);
   }
