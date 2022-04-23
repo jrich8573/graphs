@@ -19,10 +19,10 @@ endif
 CFLAGS=-g
 TARGET=$(MAINPROG)$(EXE)
 CPPS=tripplanner.cpp roadmap.cpp
-LINK=clang++ $(CPPFLAGS)
+LINK=g++ $(CPPFLAGS)
 #
-CC=clang
-CXX=clang++
+CC=gcc
+CXX=g++
 #
 #
 #  In most cases, you should not change anything below this line.
