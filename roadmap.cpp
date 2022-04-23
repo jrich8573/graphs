@@ -62,13 +62,9 @@ typedef int Vertex;
 typedef std::vector<Vertex> Trip;
 Trip RoadMap::planTheTrip(std::string fromCity, std::string toCity){
 
- std:vector<std::string> citiesVisited;
- for (City c : citiesVisited)
-    citiesVisited.push_back(c);
-
   std::vector<City> c;
-  auto pos = std::find(citiesVisited.end(fromCity);
-  if(pos == citiesVisited.end()){ // Never seen from city before need to add it
+  auto pos = cityNames.find(fromCity);
+  if(pos == cityNames.end()){ // Never seen from city before need to add it
     c = addCity(fromCity);
   }else{
     c = addCity(toCity);
