@@ -50,24 +50,30 @@ void RoadMap::addRoadSegment(std::string city1, std::string city2, double distan
   g[e].distance = distance;
 }
 
+/**
+     * @brief Plan the shortest trip between two cities.
+     * 
+     * @param fromCity the starting city
+     * @param toCity   the city where we are to finish
+     * @return std::vector<std::string>  List of cities visited, from start to finish.
+     */
+
 typedef int Vertex;
 typedef std::vector<Vertex> Trip;
 Trip RoadMap::planTheTrip(std::string fromCity, std::string toCity){
 
-  std::vector<Trip> citiesVisited;
+ std:string<Trip> citiesVisited;
+ for (Trip& t : citiesVisited)
+    citiesVisited.push_back(t);
 
-  for (std::string elem : citiesVisited){
-     if(std::find(citiesVisited.begin(), citiesVisited.end(), fromCity) != citiesVisited.end()){
-       auto pos  = citiesVisited.push_back(fromCity);
-     }else{
-       auto pos = citiesVisited.push_back(toCity);
-    }
+  std::vector<City> c;
+  auto pos = std::find(citiesVisited.end(fromCity);
+  if(pos == citiesVisited.end()){ // Never seen from city before need to add it
+    c = addCity(fromCity)
+  }else{
+    c = addCity(toCity);
   }
-
-
-
-
-return citiesVisited;
+  return c;
 }
 
 
