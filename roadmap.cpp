@@ -62,9 +62,9 @@ typedef int Vertex;
 typedef std::vector<Vertex> Trip;
 Trip RoadMap::planTheTrip(std::string fromCity, std::string toCity){
 
- std:vector<City> citiesVisited;
- for (City& t : citiesVisited)
-    citiesVisited.push_back(t);
+ std:vector<std::string> citiesVisited;
+ for (City& c : citiesVisited)
+    citiesVisited.push_back(c);
 
   std::vector<City> c;
   auto pos = std::find(citiesVisited.end(fromCity);
