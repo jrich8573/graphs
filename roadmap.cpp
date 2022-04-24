@@ -81,7 +81,7 @@ RoadMap::Trip RoadMap::planTheTrip(std::string fromCity, std::string toCity){
     
   }
   
-  return c;
+  return cityNames(c,t);
 }
 
 
