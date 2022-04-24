@@ -65,8 +65,8 @@ Trip RoadMap::planTheTrip(std::string fromCity, std::string toCity){
   std::vector<std::string> city;
   city.reserve(fromCity.size() + toCity.size());
 
-  city.push_bacK(fromCity);
-  city.push_bacK(toCity)
+  city.push_back(fromCity);
+  city.push_back(toCity)
 
 return city;
 }
