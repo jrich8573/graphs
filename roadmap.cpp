@@ -69,14 +69,14 @@ RoadMap::Trip RoadMap::planTheTrip(std::string fromCity, std::string toCity){
     Vertex v = add_vertex(g);
     g[v].city = fromCity;
     cityNames[fromCity] = v;
-    t.push_back(v);
-    t = cityNames(fromCity, t);
+    //t.push_back(v);
+    t = cityNames(fromCity, v);
 
     v = add_vertex(g);
     g[v].city = toCity;
     cityNames[toCity] = v;
-    t.push_back(v);
-    t = cityNames(toCity, t);
+    //t.push_back(v);
+    t = cityNames(toCity, v);
   }
   
   return t;
