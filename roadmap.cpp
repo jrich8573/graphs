@@ -62,19 +62,15 @@ typedef int Vertex;
 typedef std::vector<Vertex> Trip;
 Trip RoadMap::planTheTrip(std::string fromCity, std::string toCity){
 
-  std::vector<std::string> c;
-
-  //c.reserve(fromCity.size() + toCity.size());
+  std::vector<City> c;
+  c.reserve(fromCity.size() + toCity.size());
 
   for(auto it = 1; it < c.size(); ++it){
     auto pos = cityNames.find(fromCity);
     if(pos != cityNames.end()){ // Never seen from city before need to add it
-       c.addCity(fromCity);
-    }
-    
-    if(pos != cityNames.end()){
-       c.addCity(toCity);
-    } 
+      c.push_back(fromCity);
+      c.push_back(toCity);
+   
   }
 return c;
 }
