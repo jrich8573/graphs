@@ -62,20 +62,20 @@ typedef int Vertex;
 typedef std::vector<Vertex> Trip;
 RoadMap::Trip RoadMap::planTheTrip(std::string fromCity, std::string toCity){
 
-  std::vector<std::string> city;
-  city.reserve(fromCity.size() + toCity.size());
+  //std::vector<std::string> city;
+  //city.reserve(fromCity.size() + toCity.size());
 
-   
-  Vertex vfc = cityNames[fromCity];
-  Vertex vtc = cityNames[toCity];
+  auto pos = cityNames.find(fromCity);
+  if (pos == cityNames.end()){
+    // Never seen this city before. Create a vertex for it.
+    Vertex v = add_vertex(g);
+    g[v].city = fromCity;
+    cityNames[fromCity] = v;
+    v = add_vertex(g);
+    g[v].city = toCity;
+    cityNames[toCity] = v;
 
-  Edge e = add_edge(vfc, vtc, g).first; 
-  g[e].city = fromCity;
-
-  e = add_edge(vtc,vfc, g).first;
-  g[e].city = toCity;
-
-  return city;
+  return v;
 }
 
 
