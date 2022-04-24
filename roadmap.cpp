@@ -68,13 +68,13 @@ RoadMap::Trip RoadMap::planTheTrip(std::string fromCity, std::string toCity){
   if (pos == cityNames.end()){
     // Never seen this city before. Create a vertex for it.
     Vertex v = add_vertex(g);
-    g[v].city = fromCity;
+    g[v].city = addCity(fromCity);
     cityNames[fromCity] = v;
     t.push_back(v);
     //c.push_back(fromCity);
 
     v = add_vertex(g);
-    g[v].city = toCity;
+    g[v].city = addCity(toCity);
     cityNames[toCity] = v;
     t.push_back(v);
     //c.push_back(toCity);
