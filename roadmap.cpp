@@ -63,6 +63,7 @@ typedef std::vector<Vertex> Trip;
 RoadMap::Trip RoadMap::planTheTrip(std::string fromCity, std::string toCity){
 
   Trip t;
+  cityNames c;
   auto pos = cityNames.find(fromCity);
   if (pos == cityNames.end()){
     // Never seen this city before. Create a vertex for it.
@@ -70,13 +71,15 @@ RoadMap::Trip RoadMap::planTheTrip(std::string fromCity, std::string toCity){
     g[v].city = fromCity;
     cityNames[fromCity] = v;
     t.push_back(v);
+    c.push_back(fromCity, t);
     v = add_vertex(g);
     g[v].city = toCity;
     cityNames[toCity] = v;
     t.push_back(v);
+    c.push_back(toCity, t);
   }
   
-  return t;
+  return c;
 }
 
 
