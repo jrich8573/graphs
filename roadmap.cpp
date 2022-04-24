@@ -68,7 +68,7 @@ Trip RoadMap::planTheTrip(std::string fromCity, std::string toCity){
   city.push_bacK(fromCity);
   city.push_bacK(toCity)
 
-return c;
+return city;
 }
 
 
