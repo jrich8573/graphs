@@ -60,7 +60,9 @@ void RoadMap::addRoadSegment(std::string city1, std::string city2, double distan
 
 typedef int Vertex;
 typedef std::vector<Vertex> Trip;
-Trip RoadMap::planTheTrip(std::string fromCity, std::string toCity){
+RoadMap::Trip RoadMap::planTheTrip(std::string fromCity, std::string toCity){
+
+  auto 
 
   std::vector<std::string> city;
   city.reserve(fromCity.size() + toCity.size());
