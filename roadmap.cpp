@@ -85,7 +85,7 @@ RoadMap::Trip RoadMap::planTheTrip(std::string fromCity, std::string toCity){
 	std::vector<Vertex> path;
 	//Vertex v;
 
-  path.reserve(start + finish);
+  //path.reserve(start + finish);
 
   while (!path.empty()){
 		path.push_back(start);
