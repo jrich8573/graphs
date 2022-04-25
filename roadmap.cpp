@@ -62,19 +62,30 @@ void RoadMap::addRoadSegment(std::string city1, std::string city2, double distan
 typedef int Vertex;
 typedef std::vector<Vertex> Trip;
 RoadMap::Trip RoadMap::planTheTrip(std::string fromCity, std::string toCity){
-
+  
   Trip t;
+  Vertex v1;
+  Vertex v2;
+
+  
   auto pos = cityNames.find(fromCity);
   if (pos == cityNames.end()){
-    Vertex v = add_vertex(g);
-    cout << "value of v: " << v << '\n';
-    g[v].city = fromCity;
-    cout << "value of g[v].city: " << g[v].city << '\n';
-    cityNames[fromCity] = v;
-    cout << "the value of cityNames[fromCity]: " << cityNames[fromCity] << '\n';
+    v1 = add_vertex(g);
+    g[v1].city = fromCity;
+    cityNames[fromCity] = v1;
+   
+      
+    v2 = add_vertex(g);
+    g[v2].city = toCity;
+    cityNames[toCity] = v2;
+
+    while(t.empyt()){
+      t.push_back(v1);
+      t.push_back(v2);
+    }
   }
-  
-return t;
+    std::reverse(t.begin(), t.end());
+  return t;
 }
 
 
