@@ -64,24 +64,23 @@ void RoadMap::addRoadSegment(std::string city1, std::string city2, double distan
 RoadMap::Trip RoadMap::planTheTrip(std::string fromCity, std::string toCity){
    Vertex fc = cityNames[fromCity];
    Vertex tc = cityNames[toCity];
-   Vertex weight = findWeightedShortestPath(fc, tc);
 
-   queue<Vertex, list<Vertex>> q;
+   std::vector<Vertex> q = findWeightedShortestPath(0,0);
 
-   q.push(fc);
+   q.push_back(fc);
 
    while(!q.empty()){
      Vertex v = q.front();
-     q.pop();
+     q.pop_back();
 
      auto e = out_edge(v, g);
      for(auto f = e.first; f = e.second; ++f){
        Vertex w = target(*f, g);
        if(fc == e.first)
-        countinue;
+        continue;
       if(tc == e.second)
         continue;
-      q.push(w);
+      q.push_back(w);
      }
    }
    return q;
