@@ -63,34 +63,69 @@ typedef int Vertex;
 typedef std::vector<Vertex> Trip;
 RoadMap::Trip RoadMap::planTheTrip(std::string fromCity, std::string toCity){
   
-  Trip t;
-  Vertex v1;
-  Vertex v2;
+  Vertex start;
+  Vertex finish;
 
-  
   auto pos = cityNames.find(fromCity);
   if (pos == cityNames.end()){
-    v1 = add_vertex(g);
-    g[v1].city = fromCity;
-    cityNames[fromCity] = v1;
+    start = add_vertex(g);
+    g[start].city = fromCity;
+    cityNames[fromCity] = start;
    
       
-    v2 = add_vertex(g);
-    g[v2].city = toCity;
-    cityNames[toCity] = v2;
-
-    while(t.empty()){
-      t.push_back(v1);
-      t.push_back(v2);
-    }
+    finish = add_vertex(g);
+    g[finish].city = toCity;
+    cityNames[toCity] = finish;
   }
-    std::reverse(t.begin(), t.end());
-  return t;
+
+  unsigned nVertices = std::distance(vertices(g).first, vertices(g).second);
+	std::vector<Vertex> cameFrom (nVertices);
+	std::vector<unsigned> dist(nVertices, INT_MAX);
+
+  findWeightedShortestPath(0,0) = weight;
+
+  dist[(int)start] = 0;
+  typedef std::pair<int, Vertex> Element;
+	std::priority_queue<Element, std::vector<Element>, std::greater<Element> >
+	pq;
+	pq.push (Element(0, start));
+
+	// Find the shortest path
+	while (!pq.empty()){
+		Element top = pq.top();
+		pq.pop();
+		Vertex v = top.second;
+		if (v == finish) break; // exit when we reach the finish vertex
+		int d = dist[v];
+		if (top.first == d){
+			auto outgoing = out_edges(v, g);
+			for (auto e = outgoing.first; e != outgoing.second; ++e){
+				Vertex w = target(*e, g);
+				unsigned wDist = d + weight.at(*e);
+				if (dist[w] > wDist){
+				   dist[w] = wDist;
+				   pq.push(Element(wDist, w));
+				   cameFrom[w] = v;
+				}
+			}
+		}
+	}
+
+  // Extract path
+	std::vector<Vertex> path;
+	Vertex v = finish;
+	if (dist[v] != INT_MAX){
+		while (!(v == start)){
+			path.push_back(v);
+			v = cameFrom[v];
+		}
+		path.push_back(start);
+	}
+	std::reverse(path.begin(), path.end());
+	return path;
 }
 
-
-
-
+  
 /**
  * @brief Print the trip in a human-readable format
  *
