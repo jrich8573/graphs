@@ -70,12 +70,12 @@ RoadMap::Trip RoadMap::planTheTrip(std::string fromCity, std::string toCity){
     v1 = add_vertex(g);
     g[v1].city = fromCity;
     cityNames[fromCity] = v1;
-    t.push(v1);
+    t.emplace_back(v1);
       
     v2 = add_vertex(g);
     g[v2].city = toCity;
     cityNames[toCity] = v2;
-    t.push(v2);
+    t.emplace_back(v2);
   }
 return t;
 }
