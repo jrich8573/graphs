@@ -91,13 +91,10 @@ RoadMap::Trip RoadMap::planTheTrip(std::string fromCity, std::string toCity){
     path.push_back(v);
     v = cameFrom[v];
 	}
-	path.push_back(start);
-    
-  while(!path.empty()){
-      path.push_back(v);
-      v = cameFrom[v];
-  }
-  path.push_back(finish);
+	//path.push_back(start);
+  path = findWeightedShortestPath(start, finish);
+     
+ 
 
 	//std::reverse(path.begin(), path.end());
 	return path;
