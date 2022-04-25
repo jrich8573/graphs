@@ -63,25 +63,15 @@ typedef std::vector<Vertex> Trip;
 RoadMap::Trip RoadMap::planTheTrip(std::string fromCity, std::string toCity){
 
   Trip t;
-  Vertex v1;
-  Vertex v2;
+  cout << "value of t: " << t << '\n';
+  Vertex v = add_vertex(g);
+  cout << "value of v: " << v << '\n';
+  g[v].city = cityName;
+  cout << "value of g[v].city: " << g[v].city << '\n';
+  cityNames[cityName] = v;
+  cout << "cityNames[cityName]: " << cityNames[cityName] << '\n';
+
   
-  auto pos = cityNames.find(fromCity);
-  if (pos == cityNames.end()){
-    v1 = add_vertex(g);
-    g[v1].city = fromCity;
-    cityNames[fromCity] = v1;
-    t.emplace_back(cityNames[fromCity]);
-      
-    v2 = add_vertex(g);
-    g[v2].city = toCity;
-    cityNames[toCity] = v2;
-    t.emplace_back(cityNames[toCity]);
-
-    //RoadMap r;
-    //t = r.findWeightedShortestPath(v1, v2);
-
-  }
 return t;
 }
 
