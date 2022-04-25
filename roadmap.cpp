@@ -80,11 +80,11 @@ RoadMap::Trip RoadMap::planTheTrip(std::string fromCity, std::string toCity){
 
   unsigned nVertices = std::distance(vertices(g).first, vertices(g).second);
 	std::vector<Vertex> cameFrom (nVertices);
-	std::vector<unsigned> dist(nVertices, INT_MAX);
+	//std::vector<unsigned> dist(nVertices, INT_MAX);
 
   //std::vector<Vertex> weight = findWeightedShortestPath(0,0); 
 
-  dist[(int)start] = 0;
+  //dist[(int)start] = 0;
   //typedef std::pair<int, Vertex> Element;
 	//std::priority_queue<Element, std::vector<Element>, std::greater<Element> >
 	//pq;
