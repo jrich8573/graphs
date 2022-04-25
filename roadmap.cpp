@@ -67,7 +67,7 @@ RoadMap::Trip RoadMap::planTheTrip(std::string fromCity, std::string toCity){
   if (pos == cityNames.end()){
     if(!cityNames(fromCity)){
         RoadMap r;
-        r = addCity(fromCity);
+        r.addCity(fromCity);
         t.push_back(r);
         //t.push_back(toCity);
       //}else{
