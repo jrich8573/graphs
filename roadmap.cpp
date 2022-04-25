@@ -67,24 +67,17 @@ RoadMap::Trip RoadMap::planTheTrip(std::string fromCity, std::string toCity){
   Vertex v2;
   auto pos = cityNames.find(fromCity);
   if (pos == cityNames.end()){
-      if(!cityNames(fromCity)){
-        v1 = add_vertex(g);
-        g[v1].city = fromCity;
-        cityNames[fromCity] = v1;
-        t.push_back(v1);
+    v1 = add_vertex(g);
+    g[v1].city = fromCity;
+    cityNames[fromCity] = v1;
+    t.push_back(v1);
       
-        v2 = add_vertex(g);
-        g[v2].city = toCity;
-        cityNames[toCity] = v2;
-        t.push_back(v2);
-      }else{
-        v2 = add_vertex(g);
-        g[v2].city = toCity;
-        cityNames[toCity] = v2;
-        t.push_back(v2);
-    }
-    return t;
+    v2 = add_vertex(g);
+    g[v2].city = toCity;
+    cityNames[toCity] = v2;
+    t.push_back(v2);
   }
+return t;
 }
 
 
