@@ -65,12 +65,12 @@ RoadMap::Trip RoadMap::planTheTrip(std::string fromCity, std::string toCity){
   Trip t;
   auto pos = cityNames.find(fromCity);
   if (pos == cityNames.end()){
-    if(!cityNames(fromCity)){
+    //if(!cityNames(fromCity)){
         t.push_back(fromCity)
         t.push_back(toCity)
-      }else{
-        t.push_back(toCity);
-      }
+      //}else{
+      //  t.push_back(toCity);
+      //}
   }
 
   
