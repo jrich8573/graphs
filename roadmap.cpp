@@ -114,13 +114,13 @@ RoadMap::Trip RoadMap::planTheTrip(std::string fromCity, std::string toCity){
   // Extract path
 	std::vector<Vertex> path;
 	Vertex v = finish;
-	if (dist[v] != INT_MAX){
+	//if (dist[v] != INT_MAX){
 		while (!(v == start)){
 			path.push_back(v);
 			v = cameFrom[v];
 		}
 		path.push_back(start);
-	}
+	//}
 	std::reverse(path.begin(), path.end());
 	return path;
 }
