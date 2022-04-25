@@ -65,7 +65,7 @@ RoadMap::Trip RoadMap::planTheTrip(std::string fromCity, std::string toCity){
   Trip t;
   Vertex v1;
   Vertex v2;
-  Roadmap r;
+  
   auto pos = cityNames.find(fromCity);
   if (pos == cityNames.end()){
     v1 = add_vertex(g);
@@ -78,6 +78,7 @@ RoadMap::Trip RoadMap::planTheTrip(std::string fromCity, std::string toCity){
     cityNames[toCity] = v2;
     //t.emplace_back(v2);
 
+    Roadmap r;
     t = r.findWeightedShortestPath(v1, v2);
 
   }
