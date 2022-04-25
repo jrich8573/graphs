@@ -79,7 +79,7 @@ RoadMap::Trip RoadMap::planTheTrip(std::string fromCity, std::string toCity){
     g[v2].city = toCity;
     cityNames[toCity] = v2;
 
-    while(t.empyt()){
+    while(t.empty()){
       t.push_back(v1);
       t.push_back(v2);
     }
