@@ -64,13 +64,15 @@ RoadMap::Trip RoadMap::planTheTrip(std::string fromCity, std::string toCity){
 
   Trip t;
   cout << "value of t: " << t << '\n';
-  Vertex v = add_vertex(g);
-  cout << "value of v: " << v << '\n';
-  g[v].city = cityName;
-  cout << "value of g[v].city: " << g[v].city << '\n';
-  cityNames[cityName] = v;
-  cout << "cityNames[cityName]: " << cityNames[cityName] << '\n';
-
+  auto pos = cityNames.find(cityName);
+  if (pos == cityNames.end()){
+    Vertex v = add_vertex(g);
+    cout << "value of v: " << v << '\n';
+    g[v].city = cityName;
+    cout << "value of g[v].city: " << g[v].city << '\n';
+    cityNames[cityName] = v;
+    cout << "cityNames[cityName]: " << cityNames[cityName] << '\n';
+  }
   
 return t;
 }
