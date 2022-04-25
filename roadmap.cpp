@@ -88,9 +88,10 @@ RoadMap::Trip RoadMap::planTheTrip(std::string fromCity, std::string toCity){
 		while (!path.empty()){
 			path.push_back(v);
 			v = cameFrom[v];
+      path.push_back(finish);
 		}
 		path.push_back(start);
-    path.push_back(finish);
+    //path.push_back(finish);
 
 	//std::reverse(path.begin(), path.end());
 	return path;
