@@ -71,15 +71,15 @@ RoadMap::Trip RoadMap::planTheTrip(std::string fromCity, std::string toCity){
     v1 = add_vertex(g);
     g[v1].city = fromCity;
     cityNames[fromCity] = v1;
-    //t.emplace_back(v1);
+    t.emplace_back(cityNames[fromCity]);
       
     v2 = add_vertex(g);
     g[v2].city = toCity;
     cityNames[toCity] = v2;
-    //t.emplace_back(v2);
+    t.emplace_back(cityNames[toCity]);
 
-    RoadMap r;
-    t = r.findWeightedShortestPath(v1, v2);
+    //RoadMap r;
+    //t = r.findWeightedShortestPath(v1, v2);
 
   }
 return t;
