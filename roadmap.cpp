@@ -80,41 +80,10 @@ RoadMap::Trip RoadMap::planTheTrip(std::string fromCity, std::string toCity){
 
   unsigned nVertices = std::distance(vertices(g).first, vertices(g).second);
 	std::vector<Vertex> cameFrom (nVertices);
-	//std::vector<unsigned> dist(nVertices, INT_MAX);
-
-  //std::vector<Vertex> weight = findWeightedShortestPath(0,0); 
-
-  //dist[(int)start] = 0;
-  //typedef std::pair<int, Vertex> Element;
-	//std::priority_queue<Element, std::vector<Element>, std::greater<Element> >
-	//pq;
-	//pq.push (Element(0, start));
-
-	// Find the shortest path
-	//while (!pq.empty()){
-	//	Element top = pq.top();
-	//	pq.pop();
-	//	Vertex v = top.second;
-	//	if (v == finish) break; // exit when we reach the finish vertex
-	//	int d = dist[v];
-	//	if (top.first == d){
-	//		auto outgoing = out_edges(v, g);
-	//		for (auto e = outgoing.first; e != outgoing.second; ++e){
-	//			Vertex w = target(*e, g);
-	//			unsigned wDist = d + weight.at(*e);
-	//			if (dist[w] > wDist){
-	//			   dist[w] = wDist;
-	//			   pq.push(Element(wDist, w));
-	//			   cameFrom[w] = v;
-	//			}
-	//		}
-	//	}
-	//}
 
   // Extract path
 	std::vector<Vertex> path;
 	Vertex v;
-	//if (dist[v] != INT_MAX){
 
 		while (!path.empty()){
 			path.push_back(v);
@@ -122,8 +91,8 @@ RoadMap::Trip RoadMap::planTheTrip(std::string fromCity, std::string toCity){
 		}
 		path.push_back(start);
     path.push_back(finish);
-	//}
-	std::reverse(path.begin(), path.end());
+
+	//std::reverse(path.begin(), path.end());
 	return path;
 }
 
