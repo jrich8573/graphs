@@ -82,7 +82,7 @@ RoadMap::Trip RoadMap::planTheTrip(std::string fromCity, std::string toCity){
 	std::vector<Vertex> cameFrom (nVertices);
 	std::vector<unsigned> dist(nVertices, INT_MAX);
 
-  findWeightedShortestPath(0,0) = weight;
+  std::vector<Vertex> weight = findWeightedShortestPath(0,0); 
 
   dist[(int)start] = 0;
   typedef std::pair<int, Vertex> Element;
