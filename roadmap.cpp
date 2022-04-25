@@ -83,19 +83,21 @@ RoadMap::Trip RoadMap::planTheTrip(std::string fromCity, std::string toCity){
 
   // Extract path
 	std::vector<Vertex> path;
-	//Vertex v;
+	Vertex v;
 
   //path.reserve(start + finish);
 
   while (!path.empty()){
-		path.push_back(start);
-    path.push_back(finish);
-    
-    //path.push_back(v);
-	   //v = cameFrom[v];
-      //path.push_back(finish);
+    path.push_back(v);
+    v = cameFrom[v];
 	}
-
+	path.push_back(start);
+    
+  while(!path.empty()){
+      path.push_back(v);
+      v = cameFrom[v];
+  }
+  path.push_back(finish);
 
 	//std::reverse(path.begin(), path.end());
 	return path;
