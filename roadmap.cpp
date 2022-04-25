@@ -115,7 +115,7 @@ RoadMap::Trip RoadMap::planTheTrip(std::string fromCity, std::string toCity){
 	std::vector<Vertex> path;
 	Vertex v;
 	//if (dist[v] != INT_MAX){
-		while (v.size() > 0){
+		while (path.size() >= 0){
 			path.push_back(v);
 			v = cameFrom[v];
 		}
