@@ -64,7 +64,6 @@ typedef std::vector<Vertex> Trip;
 RoadMap::Trip RoadMap::planTheTrip(std::string fromCity, std::string toCity){
 
   Trip t;
-  cout << "value of t: " << t << '\n';
   auto pos = cityNames.find(fromCity);
   if (pos == cityNames.end()){
     Vertex v = add_vertex(g);
