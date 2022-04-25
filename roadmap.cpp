@@ -59,8 +59,8 @@ void RoadMap::addRoadSegment(std::string city1, std::string city2, double distan
      * @return std::vector<std::string>  List of cities visited, from start to finish.
      */
 
-typedef int Vertex;
-typedef std::vector<Vertex> Trip;
+//typedef int Vertex;
+//typedef std::vector<Vertex> Trip;
 RoadMap::Trip RoadMap::planTheTrip(std::string fromCity, std::string toCity){
   
   Vertex start;
@@ -85,13 +85,15 @@ RoadMap::Trip RoadMap::planTheTrip(std::string fromCity, std::string toCity){
 	std::vector<Vertex> path;
 	Vertex v;
 
-		while (!path.empty()){
-			path.push_back(v);
-			v = cameFrom[v];
-      path.push_back(finish);
-		}
-		path.push_back(start);
-    //path.push_back(finish);
+  path.reserve(start + finish);
+
+  while (!path.empty()){
+		path.push_back(v);
+		v = cameFrom[v];
+      //path.push_back(finish);
+	}
+	//path.push_back(start);
+  path.push_back(finish);
 
 	//std::reverse(path.begin(), path.end());
 	return path;
