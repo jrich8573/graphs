@@ -62,28 +62,39 @@ void RoadMap::addRoadSegment(std::string city1, std::string city2, double distan
 //typedef int Vertex;
 //typedef std::vector<Vertex> Trip;
 RoadMap::Trip RoadMap::planTheTrip(std::string fromCity, std::string toCity){
-   Vertex fc = cityNames[fromCity];
-   Vertex tc = cityNames[toCity];
+  
+  unsigned nVertices = std::distance(vertices(g).first, vertices(g).second);
+	std::vector<Vertex> cameFrom (nVertices);
 
-   std::vector<Vertex> q = findWeightedShortestPath(0,0);
+   // Extract path
+	std::vector<Vertex> path;
+	Vertex v;
+  auto pos = cityNames.find(fromCity);
+  if (pos == cityNames.end()){
+    Vertex start = add_vertex(g);
+    g[start].city = fromCity;
+    cityNames[fromCity] = start;
 
-   q.push_back(fc);
+    while (!path.empty()){
+      path.push_back(v);
+      v = cameFrom[v];
+	  }
+	  path.push_back(start);
+  }
+   
+  auto pos = cityNames.find(fromCity);
+  if (pos == cityNames.end()){  
+    Vertex finish = add_vertex(g);
+    g[finish].city = toCity;
+    cityNames[toCity] = finish;
 
-   while(!q.empty()){
-     Vertex v = q.front();
-     q.pop_back();
-
-     auto e = add_edge(v, g);
-     for(auto f = e.first; f = e.second; ++f){
-       Vertex w = target(*f, g);
-       if(fc == e.first)
-        continue;
-      if(tc == e.second)
-        continue;
-      q.push_back(w);
-     }
-   }
-   return q;
+    while (!path.empty()){
+      path.push_back(v);
+      v = cameFrom[v];
+	  }
+	  path.push_back(finish);
+  }
+	return path;
 }
 
   
