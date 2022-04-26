@@ -73,7 +73,7 @@ RoadMap::Trip RoadMap::planTheTrip(std::string fromCity, std::string toCity){
      Vertex v = q.front();
      q.pop_back();
 
-     auto e = out_edge(v, g);
+     auto e = add_edge(v, g);
      for(auto f = e.first; f = e.second; ++f){
        Vertex w = target(*f, g);
        if(fc == e.first)
