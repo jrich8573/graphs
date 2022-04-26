@@ -69,7 +69,7 @@ RoadMap::Trip RoadMap::planTheTrip(std::string fromCity, std::string toCity){
   cities.push_back(toCity);
 
 
-  Trip start;
+  Vertex start;
   Vertex finish;
 	Vertex v1;
   //Vertex v2;
