@@ -75,20 +75,20 @@ RoadMap::Trip RoadMap::planTheTrip(std::string fromCity, std::string toCity){
     g[start].city = fromCity;
     cityNames[fromCity] = start;
 
-    while (!path.empty()){
+    while(!path.empty()){
       path.push_back(v);
       v = cameFrom[v];
 	  }
 	  path.push_back(start);
   }
    
-  auto pos = cityNames.find(fromCity);
+  auto pos = cityNames.find(toCity);
   if (pos == cityNames.end()){  
     Vertex finish = add_vertex(g);
     g[finish].city = toCity;
     cityNames[toCity] = finish;
 
-    while (!path.empty()){
+    while(!path.empty()){
       path.push_back(v);
       v = cameFrom[v];
 	  }
