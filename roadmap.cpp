@@ -69,7 +69,7 @@ RoadMap::Trip RoadMap::planTheTrip(std::string fromCity, std::string toCity){
   cities.push_back(toCity);
 
 
-  Vertex start;
+  Trip start;
   Vertex finish;
 	Vertex v1;
   //Vertex v2;
@@ -88,7 +88,7 @@ RoadMap::Trip RoadMap::planTheTrip(std::string fromCity, std::string toCity){
 
     for(int i = 0; i < cities.size(); i++){
       g[start[i]].city = cities[i];
-      cityNames[cities[i]] = start;
+      cityNames[cities[i]] = start[i];
       finish = cityNames[cities[i]];
     }
   }
