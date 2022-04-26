@@ -81,12 +81,13 @@ RoadMap::Trip RoadMap::planTheTrip(std::string fromCity, std::string toCity){
     g[start].city = fromCity;
     cityNames[fromCity] = start;
   }
+
   while(!path.empty()){
       path.push_back(v1);
       v1 = cameFrom[v1];
-	  
+  } 
  	 path.push_back(start);
-  }  
+  
  // auto toPos = cityNames.find(toCity);
  // if (toPos == cityNames.end())  
  //   finish = add_vertex(g);
