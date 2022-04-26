@@ -63,11 +63,18 @@ void RoadMap::addRoadSegment(std::string city1, std::string city2, double distan
 //typedef std::vector<Vertex> Trip;
 RoadMap::Trip RoadMap::planTheTrip(std::string fromCity, std::string toCity){
 
+ //get cities into one vector
+  std::vector<std::string> cities;
+  cities.push_back(fromCity);
+  cities.push_back(toCity);
+
+
   Vertex start;
-  Vertex finish;
+  //Vertex finish;
 	Vertex v1;
   //Vertex v2;
   std::vector<Vertex> path;
+
 
 
   unsigned nVertices = std::distance(vertices(g).first, vertices(g).second);
@@ -76,17 +83,20 @@ RoadMap::Trip RoadMap::planTheTrip(std::string fromCity, std::string toCity){
    // Extract path
   auto fromPos = cityNames.find(fromCity);
   if (fromPos == cityNames.end()){
+   
     start = add_vertex(g);
 
-    g[start].city = fromCity;
-    cityNames[fromCity] = start;
+    for(int i = 0; i < cities.size(); i++)
+      g[start].city = cities[i];
+      cityNames[cities[i]] = cities[i];
+
   }
 
   while(!path.empty()){
       path.push_back(v1);
       v1 = cameFrom[v1];
   } 
- 	 path.push_back(start);
+ 	 path.push_back(cityNames[cities[i]]);
   
  // auto toPos = cityNames.find(toCity);
  // if (toPos == cityNames.end())  
