@@ -51,6 +51,56 @@ void RoadMap::addRoadSegment(std::string city1, std::string city2, double distan
   g[e].distance = distance;
 }
 
+std::vector<RoadMap::Vertex> RoadMap::findWeightedShortestPath ( RoadMap::Vertex start, RoadMap::Vertex finish){
+	// Initialize the distance map and the priority queue
+	unsigned nVertices = std::distance(vertices(g).first, vertices(g).second);
+
+	std::vector<Vertex> cameFrom (nVertices);
+
+	std::vector<unsigned> dist(nVertices, INT_MAX);
+	dist[(int)start] = 0;
+
+	typedef std::pair<int, Vertex> Element;
+	std::priority_queue<Element, std::vector<Element>, std::greater<Element> >
+	pq;
+	pq.push (Element(0, start));
+
+	// Find the shortest path
+	while (!pq.empty()){
+		Element top = pq.top();
+		pq.pop();
+		Vertex v = top.second;
+		if (v == finish) break; // exit when we reach the finish vertex
+		int d = dist[v];
+		if (top.first == d){
+			auto outgoing = out_edges(v, g);
+			for (auto e = outgoing.first; e != outgoing.second; ++e){
+				Vertex w = target(*e, g);
+				unsigned wDist = d + g[*e].distance;
+				if (dist[w] > wDist){
+				   dist[w] = wDist;
+				   pq.push(Element(wDist, w));
+				   cameFrom[w] = v;
+				}
+			}
+		}
+	}
+
+	// Extract path
+	std::vector<Vertex> path;
+	Vertex v = finish;
+	if (dist[v] != INT_MAX){
+		while (!(v == start)){
+			path.push_back(v);
+			v = cameFrom[v];
+		}
+		path.push_back(start);
+	}
+	std::reverse(path.begin(), path.end());
+	return path;
+}
+
+
 /**
      * @brief Plan the shortest trip between two cities.
      * 
@@ -62,58 +112,11 @@ void RoadMap::addRoadSegment(std::string city1, std::string city2, double distan
 //typedef int Vertex;
 //typedef std::vector<Vertex> Trip;
 RoadMap::Trip RoadMap::planTheTrip(std::string fromCity, std::string toCity){
-
- //get cities into one vector
-  std::vector<std::string> cities;
-  cities.push_back(fromCity);
-  cities.push_back(toCity);
-
-
-  Vertex start;
-  Vertex finish;
-	Vertex v1;
-  //Vertex v2;
-  std::vector<Vertex> path;
-
-
-
-  unsigned nVertices = std::distance(vertices(g).first, vertices(g).second);
-	std::vector<Vertex> cameFrom (nVertices);
-
-   // Extract path
-  auto fromPos = cityNames.find(fromCity);
-  if (fromPos == cityNames.end()){
-   
-    start = add_vertex(g);
-
-    for(int i = 0; i < cities.size(); i++){
-      g[start].city = cities[i];
-      cityNames[cities[i]] = start;
-      finish = cityNames[cities[i]];
-    }
-  }
-
-  while(!path.empty()){
-      path.push_back(v1);
-      v1 = cameFrom[v1];
-  } 
- 	 path.push_back(finish);
-  
- // auto toPos = cityNames.find(toCity);
- // if (toPos == cityNames.end())  
- //   finish = add_vertex(g);
-
- //   g[finish].city = toCity;
- //   cityNames[toCity] = finish;
-
- //   while(!path.empty()){
- //     path.push_back(v2);
- //     v2 = cameFrom[v2];
-	//  }
-	//path.push_back(finish);
-  
-	return path;
+  Vertex start = cityNames[fromCity];
+  Vertex finish = cityNames[toCity];
+  return findWeightedShortestPath(start, finish);
 }
+
 
   
 /**
