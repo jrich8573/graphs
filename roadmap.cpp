@@ -66,7 +66,7 @@ RoadMap::Trip RoadMap::planTheTrip(std::string fromCity, std::string toCity){
   Vertex start;
   Vertex finish;
 	Vertex v1;
-  Vertex v2;
+  //Vertex v2;
   std::vector<Vertex> path;
 
 
@@ -75,7 +75,7 @@ RoadMap::Trip RoadMap::planTheTrip(std::string fromCity, std::string toCity){
 
    // Extract path
   auto fromPos = cityNames.find(fromCity);
-  if (fromPos == cityNames.end())
+  if (fromPos == cityNames.end()){
     start = add_vertex(g);
 
     g[start].city = fromCity;
@@ -85,8 +85,8 @@ RoadMap::Trip RoadMap::planTheTrip(std::string fromCity, std::string toCity){
       path.push_back(v1);
       v1 = cameFrom[v1];
 	  }
-	path.push_back(start);
-	  
+ 	  path.push_back(start);
+  }  
  // auto toPos = cityNames.find(toCity);
  // if (toPos == cityNames.end())  
  //   finish = add_vertex(g);
