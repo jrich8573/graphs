@@ -87,18 +87,18 @@ RoadMap::Trip RoadMap::planTheTrip(std::string fromCity, std::string toCity){
 	  }
 	path.push_back(start);
 	  
-  auto toPos = cityNames.find(toCity);
-  if (toPos == cityNames.end())  
-    finish = add_vertex(g);
+ // auto toPos = cityNames.find(toCity);
+ // if (toPos == cityNames.end())  
+ //   finish = add_vertex(g);
 
-    g[finish].city = toCity;
-    cityNames[toCity] = finish;
+ //   g[finish].city = toCity;
+ //   cityNames[toCity] = finish;
 
-    while(!path.empty()){
-      path.push_back(v2);
-      v2 = cameFrom[v2];
-	  }
-	path.push_back(finish);
+ //   while(!path.empty()){
+ //     path.push_back(v2);
+ //     v2 = cameFrom[v2];
+	//  }
+	//path.push_back(finish);
   
 	return path;
 }
