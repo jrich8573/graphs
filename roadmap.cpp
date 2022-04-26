@@ -61,8 +61,7 @@ std::vector<RoadMap::Vertex> RoadMap::findWeightedShortestPath ( RoadMap::Vertex
 	dist[(int)start] = 0;
 
 	typedef std::pair<int, Vertex> Element;
-	std::priority_queue<Element, std::vector<Element>, std::greater<Element> >
-	pq;
+	std::priority_queue<Element, std::vector<Element>, std::greater<Element> > pq;
 	pq.push (Element(0, start));
 
 	// Find the shortest path
