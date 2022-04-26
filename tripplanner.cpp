@@ -57,7 +57,7 @@ int main(int argc, char **argv)
   else
   {
     RoadMap::Trip trip = roadmap.planTheTrip(startingCityName, destinationCityName);
-    cout << "the size of trip is: " << trip.size() << '\n';
+    cout << "the value of trip is: " << trip << '\n';
 
     if (trip.size() > 1)
     {
