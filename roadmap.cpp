@@ -70,7 +70,7 @@ RoadMap::Trip RoadMap::planTheTrip(std::string fromCity, std::string toCity){
 
 
   Vertex start;
-  Trip finish;
+  Vertex finish;
 	Vertex v1;
   //Vertex v2;
   std::vector<Vertex> path;
